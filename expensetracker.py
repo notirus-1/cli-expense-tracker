@@ -27,13 +27,13 @@ while True:
     elif choice == '2':
         edit = input('Which expense would you like to edit? e for electricity, w for water, g for gas r to return\n')
         if edit == 'e':
-            utilities_dict['electricity'] = input('enter your electricity expense: ')
+            utilities_dict['electricity'] = int(input('enter your electricity expense: '))
             print('expense set! ')
         elif edit == 'w':
-            utilities_dict['water'] = input('enter your water expense: ')
+            utilities_dict['water'] = int(input('enter your water expense: '))
             print('expense set! ')       
         elif edit == 'g':
-            utilities_dict['gas'] = input('enter your gas expense: ')
+            utilities_dict['gas'] = int(input('enter your gas expense: '))
             print('expense set! ')
         elif edit == 'r':
             continue

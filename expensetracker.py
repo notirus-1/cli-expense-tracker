@@ -2,6 +2,14 @@
 from time import sleep
 import json
 from pathlib import Path
+# set valueerror message function
+def ValueErrorFunction(prompt):
+    while True:
+        try:
+            return int(input(prompt))
+        except ValueError:
+            print('thats not a number blud')
+            continue
 base_dir = Path.home() / "Documents" / "expense tracker"
 base_dir.mkdir(parents=True, exist_ok=True)
 file_path = base_dir / "data.json"
@@ -27,13 +35,13 @@ while True:
     elif choice == '2':
         edit = input('Which expense would you like to edit? e for electricity, w for water, g for gas r to return\n')
         if edit == 'e':
-            utilities_dict['electricity'] = int(input('enter your electricity expense: '))
+            utilities_dict['electricity'] = ValueErrorFunction('enter your electricity expense: ')
             print('expense set! ')
         elif edit == 'w':
-            utilities_dict['water'] = int(input('enter your water expense: '))
+            utilities_dict['water'] = ValueErrorFunction('enter your water expense: ')
             print('expense set! ')       
         elif edit == 'g':
-            utilities_dict['gas'] = int(input('enter your gas expense: '))
+            utilities_dict['gas'] = ValueErrorFunction('enter your gas expense: ')
             print('expense set! ')
         elif edit == 'r':
             continue

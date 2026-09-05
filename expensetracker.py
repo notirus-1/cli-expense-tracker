@@ -1,8 +1,19 @@
 # import modules
 from time import sleep
 import json
-with open('data.json', 'r') as f:
-    utilities_dict = json.load(f)
+from pathlib import Path
+# set directories for pathlib
+base_dir = Path("/") / "home" / "noti" / "Documents" / "Cli"
+file_path = base_dir / "data.json"
+# check if data.json exists, generate it if it doesnt
+if file_path.exists():
+    with open('data.json', 'r') as f:
+        utilities_dict = json.load(f)
+else:
+    with open('data.json', 'w') as f:
+            json.dump({"electricity": "0", "water": "0", "gas": "0"}, f)
+    with open('data.json', 'r') as f:
+        utilities_dict = json.load(f)
 # print out greeting message
 print("_____                                  _____               _             ")
 print("| ____|_  ___ __   ___ _ __  ___  ___  |_   _| __ __ _  ___| | _____ _ __ ")

@@ -47,7 +47,7 @@ while True:
     elif answer == 'q':
         print('bye!')
         with open('data.json', 'w') as f:
-            jfile_path.write_text(json.dumps(utilities_dict), encoding="utf-8")
+            file_path.write_text(json.dumps(utilities_dict), encoding="utf-8")
         break
     else:
         print('Invalid choice try again')

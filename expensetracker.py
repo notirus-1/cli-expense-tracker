@@ -3,7 +3,7 @@ from time import sleep
 import json
 from pathlib import Path
 # set directories for pathlib
-base_dir = Path("/") / "home" / "noti" / "Documents" / "Cli"
+base_dir = Path("/") / "~" / "Documents" / "Cli"
 file_path = base_dir / "data.json"
 # check if data.json exists, generate it if it doesnt
 if file_path.exists():

@@ -2,18 +2,14 @@
 from time import sleep
 import json
 from pathlib import Path
-# set directories for pathlib
-base_dir = Path("/") / "~" / "Documents" / "Cli"
+base_dir = Path.home() / "Documents" / "expense tracker"
+base_dir.mkdir(parents=True, exist_ok=True)
 file_path = base_dir / "data.json"
-# check if data.json exists, generate it if it doesnt
 if file_path.exists():
-    with open('data.json', 'r') as f:
-        utilities_dict = json.load(f)
+    utilities_dict = json.loads(file_path.read_text(encoding="utf-8"))
 else:
-    with open('data.json', 'w') as f:
-            json.dump({"electricity": "0", "water": "0", "gas": "0"}, f)
-    with open('data.json', 'r') as f:
-        utilities_dict = json.load(f)
+    utilities_dict = {"electricity": "0", "water": "0", "gas": "0"}
+    file_path.write_text(json.dumps(utilities_dict), encoding="utf-8")
 # print out greeting message
 print("_____                                  _____               _             ")
 print("| ____|_  ___ __   ___ _ __  ___  ___  |_   _| __ __ _  ___| | _____ _ __ ")
@@ -51,7 +47,7 @@ while True:
     elif answer == 'q':
         print('bye!')
         with open('data.json', 'w') as f:
-            json.dump(utilities_dict, f)
+            jfile_path.write_text(json.dumps(utilities_dict), encoding="utf-8")
         break
     else:
         print('Invalid choice try again')
@@ -59,6 +55,5 @@ while True:
     return_input = input('Would you like to make any more changes? (y to return, n to quit):\n').strip().lower()
     if return_input == 'n':
         print('Bye!')
-        with open('data.json', 'w') as f:
-            json.dump(utilities_dict, f)
+        file_path.write_text(json.dumps(utilities_dict), encoding="utf-8")
         break
